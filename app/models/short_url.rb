@@ -14,7 +14,7 @@ class ShortUrl < ApplicationRecord
 
   def url_should_valid
     uri = URI.parse(url)
-    raise unless uri.is_a?(URI::HTTP) || url.is_a?(URI::HTTPS)
+    raise unless uri.is_a?(URI::HTTP) || uri.is_a?(URI::HTTPS)
   rescue StandardError
     errors.add(:base, 'wrong url format')
   end
