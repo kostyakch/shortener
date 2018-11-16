@@ -168,6 +168,7 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rails (~> 5.1.0)
+  redis (~> 4.0)
   rspec-rails
   spring
   spring-watcher-listen (~> 2.0.0)

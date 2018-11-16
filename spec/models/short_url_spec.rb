@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ShortUrl, type: :model do
   describe 'Url Should' do
     it 'be valid' do
-      expect(ShortUrl.new(url: 'http://test.com')).to be_valid
+      expect(ShortUrl.new(original_url: 'http://test.com')).to be_valid
     end
 
     it 'mot valid' do
@@ -13,7 +13,7 @@ RSpec.describe ShortUrl, type: :model do
     end
 
     it 'mot valid with wrong url format' do
-      expect(ShortUrl.new(url: 'test_string')).not_to be_valid
+      expect(ShortUrl.new(original_url: 'test_string')).not_to be_valid
     end
   end
 end

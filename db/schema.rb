@@ -14,13 +14,13 @@ ActiveRecord::Schema.define(version: 20181115122344) do
 
   create_table "short_urls", force: :cascade do |t|
     t.string "uid", null: false
-    t.string "url", null: false
+    t.string "original_url", null: false
     t.boolean "permanent", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["original_url"], name: "index_short_urls_on_original_url", unique: true
     t.index ["permanent"], name: "index_short_urls_on_permanent"
     t.index ["uid"], name: "index_short_urls_on_uid", unique: true
-    t.index ["url"], name: "index_short_urls_on_url", unique: true
   end
 
 end

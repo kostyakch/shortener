@@ -1,24 +1,19 @@
-# README
+# Short url service
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation:
+``` ruby
+bundle install
+```
+## Test it:
+``` ruby
+RAILS_ENV=test rspec
+```
 
-Things you may want to cover:
+# Это примерная реализация сервиса укорачивателя Url
+## Можно использовать любой SQL-сервер, в купе с Redis, если нужна производительность, а она нужна
+### Вначале сохраняем данные в основную SQL БД, и также в Redis
+#### Redis здесь как раз будет уместен, тк это мемчик, ключ/значение, то что нам и нужно.
+#### При запросе на получение оригинального урл пробуем найти его в Redis, если нашли - отдаем, нет, ищем в SQL БД и сохраняем в Redis, также, для последующего быстрого доступа к нему.
+#### Этим мы увенчиваем скорость на доступ к данным
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Для чего нам нужна SQL БД? Для того, чтобы не потерять данные. Тк Redis не приспособлен хранить их вечно!

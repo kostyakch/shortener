@@ -11,32 +11,32 @@ RSpec.describe Api::V1::ShortUrlsController, type: :controller do
       get :show, params: params
 
       expect(response).to have_http_status(:ok)
-      # need check format
+      # TODO: need check response json
     end
 
     it 'Returns not_found' do
       get :show, params: { id: 'wrong_id' }
 
       expect(response).to have_http_status(:not_found)
-      # need check format
+      # TODO: need check response json
     end
   end
 
   describe 'POST #create' do
-    let(:params) { { url: Faker::Internet.url } }
+    let(:params) { { original_url: Faker::Internet.url } }
 
     it 'Create & return short url' do
       post :create, params: params
 
       expect(response).to have_http_status(:created)
-      # need check format
+      # TODO: need check response json
     end
 
     it 'Create with unprocessable_entity' do
-      post :create, params: { url: 'wrong_url_format' }
+      post :create, params: { original_url: 'wrong_url_format' }
 
       expect(response).to have_http_status(:unprocessable_entity)
-      # need check format
+      # TODO: need check response json
     end
   end
 end
